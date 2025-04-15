@@ -14,7 +14,6 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
 
     Button statisticsBtn, playersBtn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,17 +30,19 @@ public class MainActivity extends AppCompatActivity {
 
         statisticsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Statistics.class);
                 startActivity(intent);
             }
         });
+
         playersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CricketPlayers.class);
                 startActivity(intent);
             }
         });
+
     }
 }
