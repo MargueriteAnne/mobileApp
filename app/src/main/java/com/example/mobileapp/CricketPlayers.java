@@ -7,8 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class CricketPlayers extends AppCompatActivity {
+
+    private RecyclerView recyclerViewPlayers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +24,8 @@ public class CricketPlayers extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        recyclerViewPlayers = findViewById(R.id.recyclerViewPlayers);
+        recyclerViewPlayers.setLayoutManager(new LinearLayoutManager(this));
     }
 }
