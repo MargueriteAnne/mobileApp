@@ -1,0 +1,51 @@
+package com.example.mobileapp.adapters;
+import com.example.mobileapp.R;
+import  com.example.mobileapp.models.Player;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
+
+public class CricketPlayerAdapter extends RecyclerView.Adapter<CricketPlayerAdapter.ViewHolder> {
+    private List<Player> playerList;
+
+    public CricketPlayerAdapter(List<Player> playerList) {
+        this.playerList = playerList;
+    }
+
+    @NonNull
+    @Override
+    public CricketPlayerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_player, parent, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull CricketPlayerAdapter.ViewHolder holder, int position) {
+        Player player = playerList.get(position);
+        holder.name.setText(player.getName());
+        holder.country.setText(player.getCountry());
+    }
+
+    @Override
+    public int getItemCount() {
+        return playerList.size();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView name, country;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            name = itemView.findViewById(R.id.player_name);
+            country = itemView.findViewById(R.id.player_country);
+        }
+    }
+}
