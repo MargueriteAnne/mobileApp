@@ -9,7 +9,6 @@ import retrofit2.http.GET;
 
 
 public interface ApiService {
-
     @GET("players")
     Call<List<Player>> getPlayers(
             @Query("apikey") String apikey
