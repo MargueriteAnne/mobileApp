@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.example.mobileapp.adapters.CricketPlayerAdapter;
 import com.example.mobileapp.models.Player;
+import com.example.mobileapp.models.PlayerResponse;
 import com.example.mobileapp.network.ApiService;
 
 import androidx.activity.EdgeToEdge;
@@ -57,12 +58,12 @@ public class CricketPlayers extends AppCompatActivity {
 
         //Make the API call
 
-        Call<List<Player>> call = apiService.getPlayers(API_KEY);
-        call.enqueue(new Callback<List<Player>>() {
+        Call<PlayerResponse> call = apiService.getPlayers(API_KEY);
+        call.enqueue(new Callback<PlayerResponse>() {
             @Override
-            public void onResponse(Call<List<Player>> call, Response<List<Player>> response) {
+            public void onResponse(Call<PlayerResponse> call, Response<PlayerResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    List<Player> playerList = response.body();
+                    List<Player> playerList = response.body().getData();
                     adapter = new CricketPlayerAdapter(playerList);
                     recyclerViewPlayers.setAdapter(adapter);
                 } else {
@@ -71,7 +72,7 @@ public class CricketPlayers extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Player>> call, Throwable t) {
+            public void onFailure(Call<PlayerResponse> call, Throwable t) {
                 Toast.makeText(CricketPlayers.this, "Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
                 Log.e("API_ERROR", t.getMessage(), t);
             }
