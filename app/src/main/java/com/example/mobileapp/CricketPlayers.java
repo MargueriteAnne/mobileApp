@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -48,6 +49,8 @@ public class CricketPlayers extends AppCompatActivity {
 
         recyclerViewPlayers = findViewById(R.id.recyclerViewPlayers);
         recyclerViewPlayers.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new CricketPlayerAdapter(new ArrayList<>());
+        recyclerViewPlayers.setAdapter(adapter);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -64,8 +67,8 @@ public class CricketPlayers extends AppCompatActivity {
             public void onResponse(Call<PlayerResponse> call, Response<PlayerResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     List<Player> playerList = response.body().getData();
-                    adapter = new CricketPlayerAdapter(playerList);
-                    recyclerViewPlayers.setAdapter(adapter);
+                    adapter.setPlayers(playerList);
+
                 } else {
                     Toast.makeText(CricketPlayers.this, "Failed to load data", Toast.LENGTH_SHORT).show();
                 }

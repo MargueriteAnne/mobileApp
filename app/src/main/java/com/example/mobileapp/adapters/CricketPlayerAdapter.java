@@ -13,10 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class CricketPlayerAdapter extends RecyclerView.Adapter<CricketPlayerAdapter.ViewHolder> {
-    private List<Player> playerList;
 
+    private List<Player> playerList;
     public CricketPlayerAdapter(List<Player> playerList) {
         this.playerList = playerList;
+    }
+
+    public void setPlayers(List<Player> playerList){
+        this.playerList =playerList;
+        notifyDataSetChanged();
+
     }
 
     @NonNull
