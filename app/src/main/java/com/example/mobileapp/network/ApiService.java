@@ -1,7 +1,5 @@
 package com.example.mobileapp.network;
-import com.example.mobileapp.models.Player;
-
-import java.util.List;
+import com.example.mobileapp.models.PlayerResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Query;
@@ -10,7 +8,7 @@ import retrofit2.http.GET;
 
 public interface ApiService {
     @GET("players")
-    Call<List<Player>> getPlayers(
+    Call<PlayerResponse> getPlayers(
             @Query("apikey") String apikey
     );
 

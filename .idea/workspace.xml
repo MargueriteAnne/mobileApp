@@ -34,7 +34,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0213e44b-6a4a-46ce-aabf-88c5b0f82f63" name="Changes" comment="We create player adapter.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobileapp/network/ApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobileapp/network/ApiService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobileapp/CricketPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobileapp/CricketPlayers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
