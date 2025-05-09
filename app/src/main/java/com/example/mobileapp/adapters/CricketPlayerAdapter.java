@@ -38,6 +38,8 @@ public class CricketPlayerAdapter extends RecyclerView.Adapter<CricketPlayerAdap
         Player player = playerList.get(position);
         holder.name.setText(player.getName());
         holder.country.setText(player.getCountry());
+
+        
     }
 
     @Override

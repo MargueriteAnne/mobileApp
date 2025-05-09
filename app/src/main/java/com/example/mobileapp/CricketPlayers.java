@@ -1,5 +1,6 @@
 package com.example.mobileapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -8,6 +9,7 @@ import com.example.mobileapp.adapters.CricketPlayerAdapter;
 import com.example.mobileapp.models.Player;
 import com.example.mobileapp.models.PlayerResponse;
 import com.example.mobileapp.network.ApiService;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -80,5 +82,21 @@ public class CricketPlayers extends AppCompatActivity {
                 Log.e("API_ERROR", t.getMessage(), t);
             }
         });
+
+        //Bottom navigation bar
+        BottomNavigationView navBar = findViewById(R.id.nav_bar);
+
+        navBar.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_home) {
+                    startActivity(new Intent(CricketPlayers.this, MainActivity.class));
+                    return true;
+
+            }
+            return false;
+        });
+
     }
+
+
 }
