@@ -1,10 +1,12 @@
 package com.example.mobileapp.adapters;
+import com.example.mobileapp.PlayerProfileFragment;
 import com.example.mobileapp.R;
 import  com.example.mobileapp.models.Player;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,6 +40,21 @@ public class CricketPlayerAdapter extends RecyclerView.Adapter<CricketPlayerAdap
         Player player = playerList.get(position);
         holder.name.setText(player.getName());
         holder.country.setText(player.getCountry());
+
+        /*holder.itemView.setOnClickListener(v -> {
+            android.content.Context context = holder.itemView.getContext();
+            android.content.Intent intent = new android.content.Intent(context, PlayerProfileFragment.class);
+            intent.putExtra("player_name", player.getName());
+            intent.putExtra("player_country", player.getCountry());
+            context.startActivity(intent);
+        });*/
+
+        holder.nextArrow.setOnClickListener(v -> {
+            android.content.Context context = holder.itemView.getContext();
+            android.content.Intent intent = new android.content.Intent(context, PlayerProfileFragment.class);
+            intent.putExtra("player_id", player.getId());
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -47,11 +64,13 @@ public class CricketPlayerAdapter extends RecyclerView.Adapter<CricketPlayerAdap
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView name, country;
+        ImageView nextArrow;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.player_name);
             country = itemView.findViewById(R.id.player_country);
+            nextArrow = itemView.findViewById(R.id.right_nextArrow);
         }
     }
 }
