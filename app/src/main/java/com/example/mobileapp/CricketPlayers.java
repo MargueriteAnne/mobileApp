@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -83,15 +84,28 @@ public class CricketPlayers extends AppCompatActivity {
             }
         });
 
+
+
+
+
+
         //Bottom navigation bar
         BottomNavigationView navBar = findViewById(R.id.nav_bar);
 
         navBar.setOnItemSelectedListener(item -> {
+
             int id = item.getItemId();
             if (id == R.id.nav_home) {
                     startActivity(new Intent(CricketPlayers.this, MainActivity.class));
                     return true;
 
+            }else if (id == R.id.nav_search) {
+                startActivity(new Intent(CricketPlayers.this, SearchFragment.class));
+                return true;
+                /*getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new SearchFragment())
+                        .commit();
+                return true;*/
             }
             return false;
         });

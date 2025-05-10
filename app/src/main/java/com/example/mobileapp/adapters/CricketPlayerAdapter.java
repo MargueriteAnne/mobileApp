@@ -1,8 +1,10 @@
 package com.example.mobileapp.adapters;
-import com.example.mobileapp.PlayerProfileFragment;
+
+import com.example.mobileapp.PlayerProfileActivity;
 import com.example.mobileapp.R;
 import  com.example.mobileapp.models.Player;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,17 +43,10 @@ public class CricketPlayerAdapter extends RecyclerView.Adapter<CricketPlayerAdap
         holder.name.setText(player.getName());
         holder.country.setText(player.getCountry());
 
-        /*holder.itemView.setOnClickListener(v -> {
-            android.content.Context context = holder.itemView.getContext();
-            android.content.Intent intent = new android.content.Intent(context, PlayerProfileFragment.class);
-            intent.putExtra("player_name", player.getName());
-            intent.putExtra("player_country", player.getCountry());
-            context.startActivity(intent);
-        });*/
 
         holder.nextArrow.setOnClickListener(v -> {
             android.content.Context context = holder.itemView.getContext();
-            android.content.Intent intent = new android.content.Intent(context, PlayerProfileFragment.class);
+            android.content.Intent intent = new android.content.Intent(context, PlayerProfileActivity.class);
             intent.putExtra("player_id", player.getId());
             context.startActivity(intent);
         });
