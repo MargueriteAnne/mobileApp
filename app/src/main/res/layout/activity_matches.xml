@@ -34,6 +34,7 @@
         tools:ignore="HardcodedText"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerViewMatches"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="40dp"
