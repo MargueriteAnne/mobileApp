@@ -1,7 +1,10 @@
 package com.example.mobileapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +36,8 @@ public class PlayerProfileActivity extends AppCompatActivity {
     TextView nameView, countryView, roleView;
     ImageView playerImage;
     PlayerStatAdapter statsAdapter;
+    ImageButton backBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +53,16 @@ public class PlayerProfileActivity extends AppCompatActivity {
         statsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
+        backBtn = findViewById(R.id.back_home);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PlayerProfileActivity.this, CricketPlayers.class);
+                startActivity(intent);
+            }
+        });
+
         String playerId = getIntent().getStringExtra("player_id");
 
         if (playerId == null || playerId.isEmpty()) {
@@ -60,6 +75,7 @@ public class PlayerProfileActivity extends AppCompatActivity {
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
 
 
 

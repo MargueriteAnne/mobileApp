@@ -3,6 +3,7 @@ package com.example.mobileapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.mobileapp.adapters.CricketPlayerAdapter;
@@ -17,6 +18,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
+import android.view.View;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,6 +39,8 @@ public class CricketPlayers extends AppCompatActivity {
     private static final String BASE_URL = "https://api.cricapi.com/v1/";
     private static final String API_KEY = "74aa5fd7-9b7d-4ae1-bf97-f21e1b03bd03";
 
+    ImageButton backBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +52,16 @@ public class CricketPlayers extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        backBtn = findViewById(R.id.back_home);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CricketPlayers.this, MainActivity.class);
+                startActivity(intent);
+            }
         });
 
         recyclerViewPlayers = findViewById(R.id.recyclerViewPlayers);
@@ -94,18 +108,19 @@ public class CricketPlayers extends AppCompatActivity {
 
         navBar.setOnItemSelectedListener(item -> {
 
-            int id = item.getItemId();
-            if (id == R.id.nav_home) {
-                    startActivity(new Intent(CricketPlayers.this, MainActivity.class));
-                    return true;
+            // Hide RecyclerView
+            findViewById(R.id.recyclerViewPlayers).setVisibility(View.GONE);
 
-            }else if (id == R.id.nav_search) {
-                startActivity(new Intent(CricketPlayers.this, SearchFragment.class));
-                return true;
-                /*getSupportFragmentManager().beginTransaction()
+            // Show Fragment container
+            findViewById(R.id.fragment_container).setVisibility(View.VISIBLE);
+
+            if (item.getItemId() == R.id.nav_search) {
+                getSupportFragmentManager()
+                        .beginTransaction()
                         .replace(R.id.fragment_container, new SearchFragment())
                         .commit();
-                return true;*/
+                return true;
+
             }
             return false;
         });
