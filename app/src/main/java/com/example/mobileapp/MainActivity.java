@@ -31,8 +31,11 @@ public class MainActivity extends AppCompatActivity {
         matchesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Matches.class);
-                startActivity(intent);
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.main_fragment_container, new MatchesFragment())
+                        .commit();
+                /*Intent intent = new Intent(MainActivity.this, Matches.class);
+                startActivity(intent);*/
             }
         });
 
