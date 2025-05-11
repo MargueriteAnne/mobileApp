@@ -1,4 +1,4 @@
-package com.example.mobileapp;
+/*package com.example.mobileapp;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -71,4 +71,4 @@ public class Matches extends AppCompatActivity {
             }
         });
     }
-}
+}*/

@@ -1,4 +1,4 @@
-package com.example.mobileapp;
+/*package com.example.mobileapp;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.mobileapp.adapters.PlayerStatAdapter;
 import com.example.mobileapp.network.ApiService;
-//import com.bumptech.glide.Glide;
 import com.example.mobileapp.models.PlayerInfoResponse;
 
 
@@ -35,7 +34,6 @@ public class PlayerProfileActivity extends AppCompatActivity {
 
     TextView nameView, countryView, roleView;
     ImageView playerImage;
-    PlayerStatAdapter statsAdapter;
     ImageButton backBtn;
 
 
@@ -119,3 +117,4 @@ public class PlayerProfileActivity extends AppCompatActivity {
         });
     }
 }
+*/

@@ -53,7 +53,7 @@ public class SearchFragment extends Fragment {
         searchInput = view.findViewById(R.id.search_input);
         searchResults = view.findViewById(R.id.search_results);
 
-        adapter = new CricketPlayerAdapter(filteredPlayers);
+        adapter = new CricketPlayerAdapter(filteredPlayers, requireActivity().getSupportFragmentManager());
         searchResults.setLayoutManager(new LinearLayoutManager(getContext()));
         searchResults.setAdapter(adapter);
 

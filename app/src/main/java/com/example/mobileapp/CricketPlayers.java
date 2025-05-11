@@ -1,4 +1,4 @@
-package com.example.mobileapp;
+/*package com.example.mobileapp;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -128,4 +128,4 @@ public class CricketPlayers extends AppCompatActivity {
     }
 
 
-}
+}*/

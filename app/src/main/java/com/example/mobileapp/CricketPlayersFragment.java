@@ -48,7 +48,7 @@ public class CricketPlayersFragment extends Fragment {
 
         recyclerViewPlayers = view.findViewById(R.id.recyclerViewPlayers);
         recyclerViewPlayers.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new CricketPlayerAdapter(new ArrayList<>());
+        adapter = new CricketPlayerAdapter(new ArrayList<>(), requireActivity().getSupportFragmentManager());
         recyclerViewPlayers.setAdapter(adapter);
 
         ImageButton backBtn = view.findViewById(R.id.back_home);
