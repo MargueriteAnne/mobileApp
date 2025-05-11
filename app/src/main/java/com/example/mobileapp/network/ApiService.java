@@ -1,5 +1,6 @@
 package com.example.mobileapp.network;
 
+import com.example.mobileapp.models.MatchResponse;
 import com.example.mobileapp.models.PlayerResponse;
 import com.example.mobileapp.models.PlayerInfoResponse;
 
@@ -18,5 +19,10 @@ public interface ApiService {
     Call<PlayerInfoResponse> getPlayerInfo(
             @Query("apikey") String apikey,
             @Query("id") String playerId
+    );
+
+    @GET("matches")
+    Call<MatchResponse> getMatches(
+            @Query("apikey") String apikey
     );
 }
