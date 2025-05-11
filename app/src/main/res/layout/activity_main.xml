@@ -47,7 +47,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="99dp"
         android:backgroundTint="@color/white"
-        android:text="Statistics"
+        android:text="Matches"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

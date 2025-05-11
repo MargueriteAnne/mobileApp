@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button statisticsBtn, playersBtn;
+    Button matchesBtn, playersBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,13 +25,13 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        statisticsBtn = findViewById(R.id.button);
+        matchesBtn = findViewById(R.id.button);
         playersBtn = findViewById(R.id.button2);
 
-        statisticsBtn.setOnClickListener(new View.OnClickListener() {
+        matchesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Statistics.class);
+                Intent intent = new Intent(MainActivity.this, Matches.class);
                 startActivity(intent);
             }
         });
