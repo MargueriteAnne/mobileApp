@@ -37,11 +37,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+
         playersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CricketPlayers.class);
-                startActivity(intent);
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.main_fragment_container, new CricketPlayersFragment())
+                        .commit();
+
+                /* Intent intent = new Intent(MainActivity.this, CricketPlayers.class);
+                startActivity(intent);*/
             }
         });
 
