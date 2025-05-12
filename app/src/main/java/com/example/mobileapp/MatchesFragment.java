@@ -33,7 +33,8 @@ public class MatchesFragment extends Fragment {
     private RecyclerView recyclerView;
     private MatchAdapter matchAdapter;
     private static final String BASE_URL = "https://api.cricapi.com/v1/";
-    private static final String API_KEY = "74aa5fd7-9b7d-4ae1-bf97-f21e1b03bd03";
+    private static final String API_KEY = "4c493822-a935-49eb-9d2b-10dd19c69bff";
+
 
     public MatchesFragment() {
         // Required empty public constructor

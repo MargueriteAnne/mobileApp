@@ -23,6 +23,6 @@ public interface ApiService {
 
     @GET("matches")
     Call<MatchResponse> getMatches(
-            @Query("apikey") String apikey
+             @Query("apikey") String apikey
     );
 }

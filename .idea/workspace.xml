@@ -19,12 +19,27 @@
           <theme>@android:style/Theme</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_matches.xml">
+        <config>
+          <theme>@style/Theme.MobileApp</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_player_profile.xml">
         <config>
           <theme>@style/Theme.MobileApp</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_statistics.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_cricket_player.xml">
+        <config>
+          <theme>@style/Theme.MobileApp</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_matches.xml">
+        <config>
+          <theme>@style/Theme.MobileApp</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_player_profile.xml">
         <config>
           <theme>@style/Theme.MobileApp</theme>
         </config>
@@ -44,6 +59,11 @@
           <theme>@style/Theme.MobileApp</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/match_item.xml">
+        <config>
+          <theme>@style/Theme.MobileApp</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/menu/bottom_nav_menu.xml">
         <config>
           <theme>@style/Theme.MobileApp</theme>
@@ -55,7 +75,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0213e44b-6a4a-46ce-aabf-88c5b0f82f63" name="Changes" comment="Fix: load and display player profile and stats using Retrofit and Glide">
+    <list default="true" id="0213e44b-6a4a-46ce-aabf-88c5b0f82f63" name="Changes" comment="Converted Player profile activity into PlayerProfileFragment">
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/checksums/md5-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/checksums/sha1-checksums.bin" afterDir="false" />
@@ -68,11 +88,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/config.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobileapp/CricketPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobileapp/CricketPlayers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobileapp/PlayerProfileActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobileapp/PlayerProfileActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_cricket_players.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_cricket_players.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_player_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_player_profile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/bottom_nav_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottom_nav_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobileapp/CricketPlayersFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobileapp/CricketPlayersFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobileapp/MatchesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobileapp/MatchesFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobileapp/PlayerProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobileapp/PlayerProfileFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobileapp/SearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobileapp/SearchFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobileapp/network/ApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobileapp/network/ApiService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,24 +198,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/players&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/OneDrive/Documents/mobileApp&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android App.app.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "feature/players",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/user/OneDrive/Documents/mobileApp",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.editor"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="android.template.-1382343685">
       <recent name="com.example.mobileapp" />
@@ -367,7 +387,39 @@
       <option name="project" value="LOCAL" />
       <updated>1746907915874</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add live search feature to filter cricket players by name or country">
+      <option name="closed" value="true" />
+      <created>1746928388331</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1746928388331</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add live search feature to filter cricket players by name or country">
+      <option name="closed" value="true" />
+      <created>1746990522531</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1746990522531</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Converted Matches activity into MatchesFragment and integrated into MainActivity">
+      <option name="closed" value="true" />
+      <created>1746993488225</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1746993488225</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Converted Player profile activity into PlayerProfileFragment">
+      <option name="closed" value="true" />
+      <created>1746999378707</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1746999378707</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -390,19 +442,22 @@
     <MESSAGE value="We create player adapter." />
     <MESSAGE value="Add clickable player card layout" />
     <MESSAGE value="Fix: load and display player profile and stats using Retrofit and Glide" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix: load and display player profile and stats using Retrofit and Glide" />
+    <MESSAGE value="Add live search feature to filter cricket players by name or country" />
+    <MESSAGE value="Converted Matches activity into MatchesFragment and integrated into MainActivity" />
+    <MESSAGE value="Converted Player profile activity into PlayerProfileFragment" />
+    <option name="LAST_COMMIT_MESSAGE" value="Converted Player profile activity into PlayerProfileFragment" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
       <map>
         <entry key="com.example.mobileapp">
           <value>
-            <CheckInfo lastCheckTimestamp="1746902584875" />
+            <CheckInfo lastCheckTimestamp="1746988990068" />
           </value>
         </entry>
         <entry key="com.example.mobileapp.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1746902584874" />
+            <CheckInfo lastCheckTimestamp="1746988990068" />
           </value>
         </entry>
       </map>
