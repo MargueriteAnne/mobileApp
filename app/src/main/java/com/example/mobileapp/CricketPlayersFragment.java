@@ -1,26 +1,25 @@
-/*package com.example.mobileapp;
+package com.example.mobileapp;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileapp.adapters.CricketPlayerAdapter;
 import com.example.mobileapp.models.Player;
 import com.example.mobileapp.models.PlayerResponse;
 import com.example.mobileapp.network.ApiService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.Fragment;
-import android.view.View;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,43 +30,34 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-
-public class CricketPlayers extends AppCompatActivity {
+public class CricketPlayersFragment extends Fragment {
 
     private RecyclerView recyclerViewPlayers;
     private CricketPlayerAdapter adapter;
     private static final String BASE_URL = "https://api.cricapi.com/v1/";
-    private static final String API_KEY = "74aa5fd7-9b7d-4ae1-bf97-f21e1b03bd03";
+    //private static final String API_KEY = "74aa5fd7-9b7d-4ae1-bf97-f21e1b03bd03";
+    private static final String API_KEY = "4c493822-a935-49eb-9d2b-10dd19c69bff";
 
-    ImageButton backBtn;
+    public CricketPlayersFragment() {
+        // Required empty public constructor
+    }
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_cricket_players);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_cricket_player, container, false);
 
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
-        backBtn = findViewById(R.id.back_home);
-
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(CricketPlayers.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        recyclerViewPlayers = findViewById(R.id.recyclerViewPlayers);
-        recyclerViewPlayers.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new CricketPlayerAdapter(new ArrayList<>());
+        recyclerViewPlayers = view.findViewById(R.id.recyclerViewPlayers);
+        recyclerViewPlayers.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new CricketPlayerAdapter(new ArrayList<>(), requireActivity().getSupportFragmentManager());
         recyclerViewPlayers.setAdapter(adapter);
+
+        ImageButton backBtn = view.findViewById(R.id.back_home);
+        backBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            startActivity(intent);
+        });
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -85,47 +75,37 @@ public class CricketPlayers extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     List<Player> playerList = response.body().getData();
                     adapter.setPlayers(playerList);
-
                 } else {
-                    Toast.makeText(CricketPlayers.this, "Failed to load data", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Failed to load data", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<PlayerResponse> call, Throwable t) {
-                Toast.makeText(CricketPlayers.this, "Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
                 Log.e("API_ERROR", t.getMessage(), t);
             }
         });
 
-
-
-
-
-
-        //Bottom navigation bar
-        BottomNavigationView navBar = findViewById(R.id.nav_bar);
-
+        BottomNavigationView navBar = view.findViewById(R.id.nav_bar);
         navBar.setOnItemSelectedListener(item -> {
 
             // Hide RecyclerView
-            findViewById(R.id.recyclerViewPlayers).setVisibility(View.GONE);
+            view.findViewById(R.id.recyclerViewPlayers).setVisibility(View.GONE);
 
             // Show Fragment container
-            findViewById(R.id.fragment_container).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.fragment_container).setVisibility(View.VISIBLE);
 
             if (item.getItemId() == R.id.nav_search) {
-                getSupportFragmentManager()
+                requireActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragment_container, new SearchFragment())
                         .commit();
                 return true;
-
             }
             return false;
         });
 
+        return view;
     }
-
-
-}*/
+}
